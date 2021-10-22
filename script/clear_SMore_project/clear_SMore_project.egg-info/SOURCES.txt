@@ -1,6 +1,0 @@
-setup.py
-clear_SMore_project.egg-info/PKG-INFO
-clear_SMore_project.egg-info/SOURCES.txt
-clear_SMore_project.egg-info/dependency_links.txt
-clear_SMore_project.egg-info/entry_points.txt
-clear_SMore_project.egg-info/top_level.txt

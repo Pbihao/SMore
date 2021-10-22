@@ -1,3 +1,0 @@
-[console_scripts]
-clear_SMore_project = clear_SMore_project:main
-
