@@ -5,10 +5,10 @@ This script will clear all files under [model, output, progress, result]
 If no arg is inputted, this script will clear local directory, in another word, '.'
 
 Example to use ===>:
-    python3 ./clear_project.py ./AP/ap_10_22  ./PET/pet_10_22
+    python3 ./clear_SMore_project.py ./AP/ap_10_22  ./PET/pet_10_22
 or
-    chmod +x ./clear_project.py
-    ./clear_project.py ./AP/ap_10_22
+    chmod +x ./clear_SMore_project.py
+    ./clear_SMore_project.py ./AP/ap_10_22
 
 ******=>Be careful to use this script, all removed files can't be restored
 """
@@ -78,8 +78,12 @@ def clear_project(dir_paths):
     print(Colors.OKGREEN + "All folders are cleaned!" + Colors.ENDC)
 
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) == 1:
-        clear_project(".")
+        clear_project("..")
     else:
         clear_project(sys.argv[1:])
+
+
+if __name__ == "__main__":
+    main()
