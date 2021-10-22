@@ -73,12 +73,13 @@ def search_labeled_data(labels, dst_path, rt_path='.', debug=False):
                 print("New anno path: {}".format(new_anno_path))
 
 
-def generate_datalist_from_dir(dir_path, dst_file_path, delimiter=','):
+def generate_datalist_from_dir(dir_path, dst_file_path, delimiter=',', prefix=None):
     """
     generate datalist in the directory of dir_path
     :param dir_path: path to json and image files -> str of dir
     :param dst_file_path: path to save datalist file -> str of file
     :param delimiter: delimiter to delimit image path and json path -> str
+    :param prefix: use prefix to replace original dir_path
     """
     assert not os.path.exists(dst_file_path) or os.path.isfile(dst_file_path)
     if not os.path.exists(os.path.split(dst_file_path)[0]):
@@ -92,14 +93,16 @@ def generate_datalist_from_dir(dir_path, dst_file_path, delimiter=','):
         with open(anno_path) as f:
             anno = json.load(f)
         img_path = os.path.join(dir_path, anno['imagePath'])
-        img_path = os.path.abspath(img_path)
-        anno_path = os.path.abspath(anno_path)
+
+        if prefix is None:
+            img_path = os.path.abspath(img_path)
+            anno_path = os.path.abspath(anno_path)
+        else:
+            img_path = os.path.join(prefix, anno['imagePath'])
+            anno_path = os.path.join(prefix, file_name)
         line = img_path + delimiter + anno_path + '\n'
         datalist.write(line)
     datalist.close()
-
-
-
 
 
 if __name__ == "__main__":
@@ -112,5 +115,9 @@ if __name__ == "__main__":
     # search_labeled_data(PET_labels, dst_path='./PET/data')
     # search_labeled_data(AP_labels, dst_path='./AP/data')
     # search_labeled_data(boli_labels, dst_path='./boli/data')
-    generate_datalist_from_dir('./AP/data', './AP/datalist/train.txt')
+
+    generate_datalist_from_dir('./AP/data', './AP/datalist/train.txt', prefix='/home/bohaopeng/SMore/dataset/weida/AP/data')
+    generate_datalist_from_dir('./boli/data', './boli/datalist/train.txt', prefix='/home/bohaopeng/SMore/dataset/weida/boli/data')
+    generate_datalist_from_dir('./paixian/data', './paixian/datalist/train.txt', prefix='/home/bohaopeng/SMore/dataset/weida/paixian/data')
+
 
