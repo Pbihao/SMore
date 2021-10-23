@@ -78,12 +78,5 @@ def clear_project(dir_paths):
     print(Colors.OKGREEN + "All folders are cleaned!" + Colors.ENDC)
 
 
-def main():
-    if len(sys.argv) == 1:
-        clear_project("..")
-    else:
-        clear_project(sys.argv[1:])
-
-
-if __name__ == "__main__":
-    main()
+def clear_SMore_project(args):
+    clear_project(args.dir_list)

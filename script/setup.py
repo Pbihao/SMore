@@ -5,19 +5,19 @@ from setuptools import setup
 """
 use:
     pip install -e $path_to_script_folder
-    
+
 For Example:
-    pip install -e /home/pbihao/SMore/github/SMore/script/clear_SMore_project
+    pip install -e /home/pbihao/SMore/github/SMore/script/
 
 to install script, and then you can directly use this script in command
 """
 
 setup(
-    name="clear_SMore_project",
+    name="SMore project tools",
     version='1.0',
     entry_points={
         'console_scripts': [
-            'clear_SMore_project=clear_SMore_project:main'
+            'smt=main:run'
         ]
     }
 )
