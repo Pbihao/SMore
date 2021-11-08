@@ -6,6 +6,7 @@ import argparse
 import argcomplete
 from clean_SMore_project.clean_SMore_project import clean_SMore_project
 from copy_backbone.copy_backbone import copy_backbone
+from clean_visualization.clean_visualization import clean_visualization
 
 
 def run():
@@ -27,6 +28,13 @@ def run():
     parser_cp.add_argument("dst_path", type=str,
                            help="path of destination folder")
     parser_cp.set_defaults(func=copy_backbone)
+
+    # clean visualization
+    parser_clnvis = subparsers.add_parser('clnvis', description="remove directories [debug, result] under [~/result/test/{epoch}/]",
+                                      help="Clean visualization files")
+    parser_clnvis.add_argument("root_path", type=str, nargs='?', default=os.getcwd(),
+                              help="This script will recursively search all subdirectories")
+    parser_clnvis.set_defaults(func=clean_visualization)
 
     argcomplete.autocomplete(parser, always_complete_options=True)
     args = parser.parse_args()

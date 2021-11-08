@@ -27,7 +27,7 @@ class Colors:
 
 def copy_backbone_from_src_to_dst(src_path, dst_path):
     assert isinstance(src_path, str) and isinstance(dst_path, str)
-    ignore_folder_names = ['model', 'output', 'progress', 'result']
+    ignore_folder_names = ['model', 'output', 'progress', 'result', 'deploy']
 
     if 'exp.yaml' not in os.listdir(src_path):
         print(Colors.FAIL + "This is not a SMore folder: " + Colors.ENDC)
